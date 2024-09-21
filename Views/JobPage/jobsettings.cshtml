@@ -1,0 +1,66 @@
+﻿@model Payroll.ViewModels.EmployeeViewModel
+
+<h2>Add / Edit Designation</h2>
+
+<form asp-action="AddOrUpdateJobs" method="post">
+    <input type="hidden" asp-for="JobList.JobId" /> <!-- Hidden field for EmployeeId -->
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Job">Designation</label>
+                <input type="text" asp-for="JobList.Job" class="form-control" required />
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Salary">Salary</label>
+                <input type="number" asp-for="JobList.Salary" class="form-control" required />
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Desc">Description</label>
+                <textarea asp-for="JobList.Desc" class="form-control" rows="2" ></textarea>
+            </div>
+        </div>
+        
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"> SAVE </button>
+            </div>
+        
+    </div>
+</form>
+
+<hr />
+
+<h2>Job List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Designation</th>
+            <th>Salary</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var JobList in Model.JobLists)
+        {
+            <tr>
+                <td>@JobList.JobId</td>
+                <td>@JobList.Job</td>
+                <td>@JobList.Salary</td>
+                <td>@JobList.Desc</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@JobList.JobId" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

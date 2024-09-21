@@ -1,0 +1,211 @@
+﻿@model Payroll.ViewModels.EmployeeViewModel
+
+<h2>Add / Edit Employee</h2>
+
+<form asp-action="AddOrUpdateEmployee" method="post">
+    <input type="hidden" asp-for="Employee.EmployeeId" />
+    <input type="hidden" asp-for="Employee.CreatedDt" />
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input type="text" asp-for="Employee.Name" class="form-control" required />
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Job">Job Title</label>
+                <select asp-for="Employee.JobId" class="form-control" asp-items="Model.JobTitles" required>
+                    <option value=""> Select Job Title </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-end">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">SAVE</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<hr />
+
+<h2>Employee List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Job Title</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model.Employees)
+        {
+            <tr>
+                <td>@employee.EmployeeId</td>
+                <td>@employee.Name</td>
+                <td>@employee.Job.Job</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@employee.EmployeeId" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@*@model Payroll.ViewModels.EmployeeViewModel
+
+<h2>Add New Employee</h2>
+
+<form asp-action="AddOrUpdateEmployee" method="post">
+ 
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input type="text" asp-for="Employee.Name" class="form-control" required />
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Job">Job Title</label>
+                <select asp-for="Employee.JobId" class="form-control" asp-items="Model.JobTitles" required>
+                    <option value=""> Select Job Title </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-end">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">  SAVE  </button>
+            </div>
+        </div>
+    </div>
+
+   
+</form>
+
+<hr />
+
+<h2>Employee List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Job Title</th>
+            <th>Duration</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model.Employees)
+        {
+            <tr>
+                <td>@employee.EmployeeId</td>
+                <td>@employee.Name</td>
+                <td>@employee.Job.Job</td> 
+                <td>
+                    <a asp-action="Edit" asp-route-id="@employee.EmployeeId" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>*@
+
+@*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*@
+
+@*@model IEnumerable<EmployeeM>
+
+<h2>Employee List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Job Title</th>
+            <th>Duration (Hours)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.EmployeeId</td>
+                <td>@employee.Name</td>
+                <td>@employee.JobId</td>
+                <td>@employee.Duration</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+*@
+
+@*
+@{
+    ViewData["Title"] = "Index";
+}
+*@
+@*@model Payroll.ViewModels.EmployeeViewModel
+
+@using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post))
+{
+    <div class="form-group">
+        <label asp-for="Employee.Name">Name</label>
+        <input asp-for="Employee.Name" class="form-control" />
+        <span asp-validation-for="Employee.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Employee.JobTitleId">Job Title</label>
+        <select asp-for="Employee.JobTitleId" asp-items="Model.JobTitles" class="form-control"></select>
+        <span asp-validation-for="Employee.JobTitleId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Employee.Duration">Duration</label>
+        <input asp-for="Employee.Duration" class="form-control" />
+        <span asp-validation-for="Employee.Duration" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Employee.EmployeeId">Code</label>
+        <input asp-for="Employee.EmployeeId" class="form-control" />
+        <span asp-validation-for="Employee.EmployeeId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Employee</button>
+}@*
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Job Title</th>
+            <th>Duration</th>
+            <th>Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model.Employees)
+        {
+            <tr>
+                <td>@employee.Name</td>
+                <td>@employee.Job.Desc</td>
+                <td>@employee.Duration</td>
+                <td>@employee.EmployeeId</td>
+            </tr>
+        }
+    </tbody>
+</table>*@
+

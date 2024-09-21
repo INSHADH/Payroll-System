@@ -1,0 +1,138 @@
+﻿@model Payroll.ViewModels.PayrollViewModel
+
+<h2>Payroll</h2>
+
+<form asp-action="CalcPayroll" method="post">
+    @*<input type="hidden" asp-for="Payroll.JobId" />*@
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="EmployeeId">Employee</label>
+                <select asp-for="Payroll.EmployeeId" class="form-control" asp-items="Model.Joblists" required>
+                    <option value=""> Select Your Name </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="MonthId">Month</label>
+                <select asp-for="Payroll.MonthId" class="form-control" asp-items="Model.months" required>
+                    <option value=""> Select Month </option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="Year">Year</label>
+                <input type="number" asp-for="Payroll.Year" class="form-control" required min="2024" max="9999" />
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="WorkingHours">Hours Worked</label>
+                <input type="number" asp-for="Payroll.WorkingHours" class="form-control" required min="0" />
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div style="height: 20px;"></div>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-end">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"> Submit </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<hr />
+
+@*@if (Model.Payroll != null)
+{*@
+<div class="row">
+    <!-- Basic Salary -->
+    <div class="col-md-6">
+        <label>Hourly Salary:</label>
+    </div>
+    <div class="col-md-6">
+        <span>@Model.Payroll.Salary</span>
+    </div>
+</div>
+<hr />
+
+@*<div class="col-md-12">
+    <div style="height: 20px;"></div>
+</div>*@
+
+<div class="row">
+    <!-- Basic Salary -->
+    <div class="col-md-6">
+        <label>Basic Salary:</label>
+    </div>
+    <div class="col-md-6">
+        <span>@Model.Payroll.BasicSalary</span>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Housing Salary -->
+    <div class="col-md-6">
+        <label>Housing Salary:</label>
+    </div>
+    <div class="col-md-6">
+        <span>@Model.Payroll.HousingSalary</span>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Transport Salary -->
+    <div class="col-md-6">
+        <label>Transport Salary:</label>
+    </div>
+    <div class="col-md-6">
+        <span>@Model.Payroll.TransportSalary</span>
+    </div>
+</div>
+
+<hr />
+
+
+
+
+<div class="row">
+    <!-- Total Salary -->
+    <div class="col-md-6">
+        <label>Total Salary:</label>
+    </div>
+    <div class="col-md-6">
+        <span>@Model.Payroll.TotalSalary</span>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Tax -->
+    <div class="col-md-6">
+        <label>Tax:</label>
+    </div>
+    <div class="col-md-6">
+        <span>@Model.Payroll.Tax</span>
+    </div>
+</div>
+<hr />
+
+
+<div class="row">
+    <!-- Tax -->
+    <div class="col-md-6">
+        <label>After Tax:</label>
+    </div>
+    <div class="col-md-6">
+        <span>@Model.Payroll.AfterTax</span>
+    </div>
+</div>
+@*}*@

@@ -1,0 +1,61 @@
+﻿@*@model Payroll.VeiwModels.EmployeeViewModel
+
+@using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post))*@
+
+@{
+    ViewData["Title"] = "AddEmployee";
+}
+
+<h1>AddEmployee</h1>
+@*
+    <div class="form-group">
+        <label asp-for="Employee.Name">Name</label>
+        <input asp-for="Employee.Name" class="form-control" />
+        <span asp-validation-for="Employee.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Employee.JobTitleId">Job Title</label>
+        <select asp-for="Employee.JobTitleId" asp-items="Model.JobTitles" class="form-control"></select>
+        <span asp-validation-for="Employee.JobTitleId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Employee.Duration">Duration</label>
+        <input asp-for="Employee.Duration" class="form-control" />
+        <span asp-validation-for="Employee.Duration" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Employee.EmployeeId">Code</label>
+        <input asp-for="Employee.EmployeeId" class="form-control" />
+        <span asp-validation-for="Employee.EmployeeId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Employee</button>
+
+
+<h2>Employee List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Job Title</th>
+            <th>Duration</th>
+            <th>Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model.Employees)
+        {
+            <tr>
+    
+            <td>@employee.Name</td>
+                <td>@employee.Job.Job</td>
+                <td>@employee.Duration</td>
+                <td>@employee.EmployeeId</td>
+            </tr>
+        }
+    </tbody>
+</table>*@
